@@ -1,0 +1,15 @@
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.footer-image {
+    height: 30px;
+}
+
+.footer-image-text {
+    font-size: 12px;
+}

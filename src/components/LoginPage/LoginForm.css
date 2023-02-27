@@ -1,0 +1,77 @@
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 65vh;
+}
+
+.login-form-title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid black;
+    margin-bottom: 40px;
+}
+
+.login-form-title {
+    padding-bottom: 2px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.login-form-text-field {
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 75%;
+    background: rgba(160, 176, 187, 0.2);
+    margin-bottom: 15px;
+}
+
+.login-form-icon-container {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.login-form-icon {
+    width: 25px;
+}
+
+.login-form-text-container {
+    width: 100%;
+}
+
+.login-form-text-input {
+    height: 48px;
+    width: 100%;
+    border: 0px;
+    border-radius: 10px;
+    font-size: 16px;
+    background: rgba(160, 176, 187, 0);
+}
+
+.login-form-text-input:focus {
+    outline: none;
+}
+
+.login-form-button {
+    cursor: pointer;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 75%;
+    background: rgba(47, 160, 238, 0.2);
+    margin-top: 25px;
+}
+
+.login-form-button-text {
+    font-size: 18px;
+    font-weight: 700;
+}

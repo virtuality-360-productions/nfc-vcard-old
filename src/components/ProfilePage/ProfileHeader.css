@@ -1,0 +1,40 @@
+.profile-header-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  margin: 0px 20px;
+  background: rgba(160, 176, 187, 0.2);
+}
+
+.profile-picture-container {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+}
+
+.profile-header-text-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.profile-name-text {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.profile-role-text {
+  font-size: 18px;
+  margin-top: 3px;
+}
+
+.profile-company-text {
+  font-size: 18px;
+  margin-top: 3px;
+}
