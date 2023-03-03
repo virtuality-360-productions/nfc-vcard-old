@@ -60,18 +60,6 @@ const SaveContact = () => {
       a.download = "vcard.vcf";
       a.click();
     }
-
-    myVCard.setFormat('vcard');
-
-    const file = new Blob([myVCard.toString()], {
-      type: "text/vcard; charset=utf-8"
-    });
-
-    const a = document.createElement("a");
-    a.rel = 'noreferrer';
-    a.href = URL.createObjectURL(file);
-    a.download = "vcard.vcf";
-    a.click();
   }
 
   useEffect(() => {
