@@ -1,0 +1,25 @@
+.profile-links-container {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  margin-top: 10px;
+}
+
+.profile-links-image-container {
+  width: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.profile-links-text-container {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: calc(100% - 40px);
+  border-radius: 10px;
+  background: rgba(160, 176, 187, 0.2);
+}
+
+.profile-links-text {
+  padding: 0px 20px;
+}

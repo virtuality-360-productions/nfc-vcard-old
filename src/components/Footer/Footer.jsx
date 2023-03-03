@@ -1,12 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import companyLogo from '../../assets/images/company-logo.png';
 import './Footer.css';
 
 const Footer = () => {
+  const navigate = useNavigate();
+  
+  const routeLoginPage = () => {
+    navigate('/');
+  }
+
   return (
     <div className='footer-container'>
       <div>
-        <img className='footer-image' src={companyLogo} alt='company-logo' />
+        <img onClick={() => routeLoginPage()} className='footer-image' src={companyLogo} alt='company-logo' />
       </div>
 
       <div>
