@@ -1,23 +1,45 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './LoginForm.css';
-import CardIcon from '../../assets/icons/card.png'
+import EmailIcon from '../../assets/icons/email.png'
 import PasswordIcon from '@mui/icons-material/Password';
 import { useNavigate } from 'react-router-dom';
+import { db } from '../../environment/firebase-config';
+import { FirebaseAuthContext } from '../../utilities/context/FirebaseAuthContext';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 const LoginForm = () => {
-  const [cardId, setCardId] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { userLogin } = useContext(FirebaseAuthContext);
 
   const navigate = useNavigate();
 
   // TODO- login verification logic
-  const userLogin = () => {
+  const submitLogin = async(event) => {
+    event.preventDefault();
+
     // login loading spinner
 
     // login verification logic
+    const user = await userLogin(email, password);
 
-    // navigation logic
-    navigate('/profile/jeremyyytannn');
+    if (user) {
+      const userId = user['user']['uid'];
+      const cardsRef = collection(db, `cards`);
+      const cardQuery = query(cardsRef, where('user_id', '==', userId));
+      const cardQuerySnapshot = await getDocs(cardQuery);
+
+      cardQuerySnapshot.forEach((doc) => {
+        if (doc.exists()) {
+          const username = doc.data()['username'];
+          navigate(`/profile/${username}`);
+        }
+      })
+    } else {
+      // TODO- wrong password dialog
+
+    }
+    
   }
 
   return (
@@ -30,16 +52,16 @@ const LoginForm = () => {
 
       <div className='login-form-text-field'>
         <div className='login-form-icon-container'>
-          <img className='login-form-icon' src={CardIcon} alt='card_icon' />
+          <img className='login-form-icon' src={EmailIcon} alt='email_icon' />
         </div>
 
         <div className='login-form-text-container'>
           <input 
             className='login-form-text-input'
-            value={cardId}
-            onChange={event => setCardId(event.target.value)}
-            type='text'
-            placeholder='Card ID' />
+            value={email}
+            onChange={event => setEmail(event.target.value)}
+            type='email'
+            placeholder='Email' />
         </div>
       </div>
 
@@ -58,7 +80,7 @@ const LoginForm = () => {
         </div>
       </div>
 
-      <div onClick={userLogin} className='login-form-button'>
+      <div onClick={submitLogin} className='login-form-button'>
         <span className='login-form-button-text'>
           Login
         </span>
