@@ -2,7 +2,7 @@ import React from 'react';
 import './ProfileHeader.css';
 import DummyProfilePicture from '../../assets/images/dummy-profile-pic.png';
 
-const ProfileInfo = () => {
+const ProfileHeader = () => {
   return (
     <div className='profile-header-container'>
       <div className='profile-picture-container'>
@@ -18,4 +18,4 @@ const ProfileInfo = () => {
   )
 }
 
-export default ProfileInfo
+export default ProfileHeader

@@ -3,9 +3,7 @@ import './LoginForm.css';
 import EmailIcon from '../../assets/icons/email.png'
 import PasswordIcon from '@mui/icons-material/Password';
 import { useNavigate } from 'react-router-dom';
-import { db } from '../../environment/firebase-config';
 import { FirebaseAuthContext } from '../../utilities/context/FirebaseAuthContext';
-import { collection, getDocs, query, where } from 'firebase/firestore';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -24,17 +22,7 @@ const LoginForm = () => {
     const user = await userLogin(email, password);
 
     if (user) {
-      const userId = user['user']['uid'];
-      const cardsRef = collection(db, `cards`);
-      const cardQuery = query(cardsRef, where('user_id', '==', userId));
-      const cardQuerySnapshot = await getDocs(cardQuery);
-
-      cardQuerySnapshot.forEach((doc) => {
-        if (doc.exists()) {
-          const username = doc.data()['username'];
-          navigate(`/profile/${username}`);
-        }
-      })
+      navigate('/profile/edit');
     } else {
       // TODO- wrong password dialog
 

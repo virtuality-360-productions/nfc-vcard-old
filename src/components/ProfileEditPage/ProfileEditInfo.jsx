@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import './ProfileInfo.css';
+import React from 'react';
+import './ProfileEditInfo.css';
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LaunchOutlinedIcon from '@mui/icons-material/LaunchOutlined';
+import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 
-const ProfileInfo = ({ infos }) => {
+const ProfileEditInfo = ({ infos }) => {
+  const handleOptionClicks = (optionIndex) => {
+    console.log(optionIndex);
+  }
+
   return (
     <div>
       { infos ? infos.map((info, index) => (
-          <div key={index} className='profile-info-container'>
-            <div className='profile-info-image-container'>
+          <div key={index} className='profile-edit-info-container'>
+            <div className='profile-edit-info-image-container'>
               {
                 info.type === "location" ? <PlaceOutlinedIcon /> :
                 info.type === "phone" ? <PhoneOutlinedIcon /> :
@@ -20,8 +25,9 @@ const ProfileInfo = ({ infos }) => {
               }
             </div>
 
-            <div className='profile-info-text-container'>
-              <span className='profile-info-text'>{info.detail}</span>
+            <div className='profile-edit-info-text-container'>
+              <span className='profile-edit-info-text'>{info.detail}</span>
+              <MoreHorizOutlinedIcon onClick={() => handleOptionClicks(index)} className='profile-edit-info-option-button' />
             </div>
           </div>
         )) : null
@@ -30,4 +36,4 @@ const ProfileInfo = ({ infos }) => {
   )
 }
 
-export default ProfileInfo
+export default ProfileEditInfo

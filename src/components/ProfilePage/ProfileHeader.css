@@ -7,8 +7,9 @@
 }
 
 .profile-picture-container {
+  height: 140px;
   margin-top: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .profile-picture {
