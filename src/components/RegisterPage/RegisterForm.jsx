@@ -46,7 +46,7 @@ const RegisterForm = ({ cardId }) => {
     })
 
     // navigation logic
-    navigate(`/profile/${username}`);
+    navigate(`/profile/edit`);
   }
 
   return (
