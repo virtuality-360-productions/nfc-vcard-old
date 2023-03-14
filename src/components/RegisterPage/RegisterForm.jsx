@@ -33,7 +33,6 @@ const RegisterForm = ({ cardId }) => {
       id: userId,
       card: cardId,
       email: email,
-      password: password,
     }).then(result => {
       const cardRef = doc(db, 'cards', cardId);
 
