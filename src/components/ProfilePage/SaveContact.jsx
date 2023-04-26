@@ -33,8 +33,6 @@ const SaveContact = () => {
   }
 
   const saveContact = () => {
-    console.log('save contact');
-
     if (system === 'ios') {
       const link = document.createElement('a');
 

@@ -1,0 +1,34 @@
+.profile-settings-navigator-container {
+  height: 50px;
+  display: flex;
+  border-radius: 10px;
+  margin: 0px 20px;
+}
+
+.profile-settings-navigator-subcontainer-l {
+  width: 33%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.profile-settings-navigator-subcontainer-m {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-settings-navigator-subcontainer-r {
+  width: 33%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.profile-settings-navigator-title {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.profile-settings-navigator-icon {
+  margin-left: 15px;
+  cursor: pointer;
+}

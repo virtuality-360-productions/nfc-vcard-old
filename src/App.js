@@ -6,6 +6,8 @@ import ProfilePage from './pages/ProfilePage/ProfilePage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import CardPage from './pages/CardPage/CardPage';
 import ProfileEditPage from './pages/ProfileEditPage/ProfileEditPage';
+import ProtectedRoute from './utilities/routes/ProtectedRoute';
+import ProfileSettingsPage from './pages/ProfileSettingsPage/ProfileSettingsPage';
 
 function App() {
   return (
@@ -15,9 +17,13 @@ function App() {
           <Route path='/' element={<LandingPage />} />
           <Route path='/register/:cardId' element={<RegisterPage />} />
           <Route path='/login' element={<LoginPage />} />
-          <Route path='/profile/edit' element={<ProfileEditPage />} />
           <Route path='/profile/:username' element={<ProfilePage />} />
-          <Route path='/card/:cardId' element={<CardPage />} />
+
+          <Route element={<ProtectedRoute type='user' />}>
+            <Route path='/profile/edit' element={<ProfileEditPage />} />
+            <Route path='/profile/settings' element={<ProfileSettingsPage />} />
+            <Route path='/card/:cardId' element={<CardPage />} />
+          </Route>
         </Routes>
       </Router>
     </div>

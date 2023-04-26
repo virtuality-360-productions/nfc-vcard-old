@@ -6,10 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import { FirebaseAuthContext } from '../../utilities/context/FirebaseAuthContext';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../environment/firebase-config';
+import { SnackbarContext } from '../../utilities/context/SnackbarContext';
 
 const ProfileEditNavigator = () => {
   const navigate = useNavigate();
   const { getCurrentUser, userLogout } = useContext(FirebaseAuthContext);
+  const { toggleSnackbar } = useContext(SnackbarContext);
 
   const handleButtonClicks = async(type) => {
     if (type === 'logout') {
@@ -22,7 +24,8 @@ const ProfileEditNavigator = () => {
       cardQuerySnapshot.forEach(async(doc) => {
         if (doc.exists()) {
           await userLogout();
-          
+
+          toggleSnackbar(3000, 'success', 'Logged out successfully.')
           navigate(`/profile/${doc.data()['username']}`);
         }
       })
