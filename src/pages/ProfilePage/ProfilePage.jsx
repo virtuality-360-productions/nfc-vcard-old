@@ -70,7 +70,7 @@ const ProfilePage = () => {
     <div>
       <Header />
       <ProfileHeader name={name} company_name={companyName} company_role={companyRole} />
-      <SaveContact />
+      <SaveContact name={name} company_name={companyName} company_role={companyRole} infos={infos} links={links} />
       <ProfileInfoLinks infos={infos} links={links} />
       <Footer />
     </div>

@@ -4,23 +4,44 @@ import VCard from 'vcard-creator';
 import './SaveContact.css';
 import CollectionsBookmarkOutlinedIcon from '@mui/icons-material/CollectionsBookmarkOutlined';
 
-const SaveContact = () => {
+const SaveContact = ({ name, company_name, company_role, infos, links }) => {
   const myVCard = new VCard();
   const [system, setSystem] = useState('');
 
   myVCard
     // Add personal data
-    .addName('Jeremy')
+    .addName(name)
     // Add work data
-    .addCompany('Virtuality 360 Productions')
-    .addJobtitle('Graphic Designer')
-    .addEmail('jeremyyytannn@gmail.com')
-    .addPhoneNumber('+60134567890', 'PREF;WORK')
-    .addPhoneNumber('+60123456789', 'WORK')
-    .addAddress(null, null, 'Street', 'Town', null, 'Postcode', 'Malaysia')
-    .addSocial('https://twitter.com/tanchiachun', 'Twitter', 'tanchiachun')
-    .addSocial('https://www.facebook.com/tanchiachunj/', 'Facebook', 'Tan Chia Chun')
-    .addURL('http://tanchiachun-com.firebaseapp.com/')
+    .addCompany(company_name)
+    .addJobtitle(company_role)
+
+  infos.map((info) => {
+    if (info.type === 'email') {
+      myVCard.addEmail(info.detail);
+    } else if (info.type === 'phone') {
+      myVCard.addPhoneNumber(info.detail, 'PREF;WORK')
+    } else if (info.type === 'website') {
+      myVCard.addURL(info.detail);
+    } else if (info.type === 'address') {
+      myVCard.addAddress(null, null, info.detail, null, null, null, null);
+    }
+
+    return true;
+  })
+
+  links.info((link) => {
+    myVCard.addURL(link.url);
+
+    return true;
+  })
+
+    // .addEmail('jeremyyytannn@gmail.com')
+    // .addPhoneNumber('+60134567890', 'PREF;WORK')
+    // .addPhoneNumber('+60123456789', 'WORK')
+    // .addAddress(null, null, 'Street', 'Town', null, 'Postcode', 'Malaysia')
+    // .addSocial('https://twitter.com/tanchiachun', 'Twitter', 'tanchiachun')
+    // .addSocial('https://www.facebook.com/tanchiachunj/', 'Facebook', 'Tan Chia Chun')
+    // .addURL('http://tanchiachun-com.firebaseapp.com/')
 
   const getMobileOS = () => {
     var userAgent = navigator.userAgent;
