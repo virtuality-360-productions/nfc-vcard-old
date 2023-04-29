@@ -14,8 +14,8 @@ const SaveContact = ({ name, company_name, company_role, infos, links }) => {
     // Add work data
     .addCompany(company_name)
     .addJobtitle(company_role)
-
-  infos.map((info) => {
+  
+  infos && infos.map((info) => {
     if (info.type === 'email') {
       myVCard.addEmail(info.detail);
     } else if (info.type === 'phone') {
@@ -29,7 +29,7 @@ const SaveContact = ({ name, company_name, company_role, infos, links }) => {
     return true;
   })
 
-  links.info((link) => {
+  links && links.info((link) => {
     myVCard.addURL(link.url);
 
     return true;
