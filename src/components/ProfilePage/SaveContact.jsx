@@ -15,25 +15,29 @@ const SaveContact = ({ name, company_name, company_role, infos, links }) => {
     .addCompany(company_name)
     .addJobtitle(company_role)
   
-  infos && infos.map((info) => {
-    if (info.type === 'email') {
-      myVCard.addEmail(info.detail);
-    } else if (info.type === 'phone') {
-      myVCard.addPhoneNumber(info.detail, 'PREF;WORK')
-    } else if (info.type === 'website') {
-      myVCard.addURL(info.detail);
-    } else if (info.type === 'address') {
-      myVCard.addAddress(null, null, info.detail, null, null, null, null);
-    }
+  if (infos) {
+    infos.map((info) => {
+      if (info.type === 'email') {
+        myVCard.addEmail(info.detail);
+      } else if (info.type === 'phone') {
+        myVCard.addPhoneNumber(info.detail, 'PREF;WORK')
+      } else if (info.type === 'website') {
+        myVCard.addURL(info.detail, 'WORK');
+      } else if (info.type === 'location') {
+        myVCard.addAddress(info.detail);
+      }
+  
+      return true;
+    })
+  }
 
-    return true;
-  })
-
-  links && links.info((link) => {
-    myVCard.addURL(link.url);
-
-    return true;
-  })
+  if (links) {
+    links.map((link) => {
+      myVCard.addSocial(link.url, link.name);
+  
+      return true;
+    })
+  }
 
     // .addEmail('jeremyyytannn@gmail.com')
     // .addPhoneNumber('+60134567890', 'PREF;WORK')
